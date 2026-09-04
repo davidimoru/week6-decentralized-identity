@@ -80,3 +80,13 @@ test('Unauthorized action should yield ACTION_NOT_ALLOWED', () => {
   assert.equal(result.decision, 'DENY');
   assert.equal(result.reason_code, 'ACTION_NOT_ALLOWED');
 });
+test('Subject mismatch should yield SUBJECT_MISMATCH', () => {
+  const result = runVerifier(
+    'src/test-fixtures/subject-mismatch.json',
+    VALID_HOLDER_DID,
+    'read-training-lab'
+  );
+
+  assert.equal(result.decision, 'DENY');
+  assert.equal(result.reason_code, 'SUBJECT_MISMATCH');
+});
